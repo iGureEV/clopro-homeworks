@@ -1,0 +1,15 @@
+#cloud-config
+write_files:
+  - path: /var/www/html/index.html
+    permissions: '0644'
+    content: |
+      <html>
+        <head><title>HW 15.2</title></head>
+        <body>
+          <h1>Группа ВМ 15.2 работает</h1>
+          <img src="https://storage.yandexcloud.net/geolook-20261007/picture.png" width="400">
+        </body>
+      </html>
+runcmd:
+  - systemctl enable --now apache2
+
