@@ -29,12 +29,14 @@ resource "yandex_storage_bucket_grant" "images_public" {
 }
 
 resource "yandex_storage_object" "picture" {
-  bucket     = yandex_storage_bucket.images.bucket
-  key        = "picture.png"
-  source     = "assets/picture.png"
-  access_key = var.sa_access_key
-  secret_key = var.sa_secret_key
-  depends_on = [yandex_storage_bucket_grant.images_public]
+  bucket       = yandex_storage_bucket.images.bucket
+  key          = "picture.png"
+  source       = "assets/picture.png"
+  content_type = "image/png"
+  acl          = "public-read"
+  access_key   = var.sa_access_key
+  secret_key   = var.sa_secret_key
+  depends_on   = [yandex_storage_bucket_grant.images_public]
 }
 
 
